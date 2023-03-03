@@ -173,4 +173,24 @@ nav ul li a {
     stroke-width: 4px;
     stroke: var(--darkest);
   }
+
+  .menu-icon-grid svg:hover .buns-fill {
+    fill: #fe9738;
+  }
+
+  .menu-icon-grid svg:hover .patty-fill {
+    fill: #9e5528;
+  }
+
+  .menu-icon-grid svg:hover .salad-fill {
+    fill: #bbec6c;
+  }
+
+  .menu-icon-grid svg:hover .cheese-fill {
+    fill: #ffe14a;
+  }
+
+  .menu-icon-grid svg:hover .bones-fill {
+    fill: #dfd8c9;
+  }
 }
