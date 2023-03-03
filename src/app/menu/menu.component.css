@@ -2,10 +2,18 @@ nav {
   background-color: var(--lightest);
   display: flex;
   justify-content: space-between;
-  padding: 0 2em;
+  align-items: center;
+  padding: 0 var(--lf-pad-medium);
   position: fixed;
   top: 0;
-  width: calc(100% - 4em);
+  width: calc(100% - calc(var(--lf-pad-medium) * 2));
+}
+
+.nav-rel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 nav ul {
@@ -24,12 +32,7 @@ nav ul {
   justify-content: space-between;
 }
 
-.ul-menu-small {
-  display: none;
-}
-
-.ul-menu li,
-.ul-menu-small li {
+.ul-menu li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,13 +74,42 @@ nav ul li a {
 }
 
 .circle-img {
-  border: 6px solid #000;
+  border: 6px solid var(--darkest);
+}
+
+.circle-img:hover {
+  border-color: var(--green);
+}
+
+.circle-img:active {
+  border-color: #fff;
+}
+
+.ul-menu li a:link {
+  color: var(--darker);
+}
+
+.ul-menu li a:visited {
+  color: var(--darkest);
+}
+
+.ul-menu li a:hover {
+  color: var(--green);
+}
+
+.ul-menu li a:active {
+  color: #fff;
+  -webkit-text-stroke: 1px var(--darkest);
+}
+
+.menu-icon-grid {
+  display: none;
 }
 
 @media screen and (max-width: 1025px) {
   nav {
-    padding: 0 1em;
-    width: calc(100% - 2em);
+    padding: 0 var(--lf-pad-small);
+    width: calc(100% - calc(var(--lf-pad-small) * 2));
   }
 
   nav ul li a {
@@ -90,7 +122,15 @@ nav ul li a {
 }
 
 @media screen and (max-width: 769px) {
+  .nav-rel {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  .ul-logo,
   .marui-img {
+    width: 60px;
     height: 60px;
   }
 
@@ -99,10 +139,38 @@ nav ul li a {
   }
 
   .ul-menu {
+    position: absolute;
+    /* right: -1em; */
+    right: -13em;
+    flex-direction: column;
+    align-items: end;
+    background-color: var(--lightest);
+    width: auto;
+    border-bottom-left-radius: 10px;
+  }
+
+  .ul-menu li {
+    padding: 0.7em 2em;
+  }
+
+  .menu-icon-grid {
+    display: grid;
+    place-content: center;
+  }
+
+  .menu-icon-grid svg {
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 0;
+  }
+
+  .menu-icon-grid svg:last-child {
     display: none;
   }
 
-  .ul-menu-small {
-    display: block;
+  .menu-icon-path {
+    stroke-width: 4px;
+    stroke: var(--darkest);
   }
 }

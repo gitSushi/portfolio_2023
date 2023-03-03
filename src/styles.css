@@ -6,6 +6,14 @@
   --darkest: #5b5a57;
   --cardboard-dark: #d0bcad;
   --cardboard-light: #f1ebe4;
+  --green: #2cff00;
+
+  --top-pad-large: 110px;
+  --top-pad-medium: 90px;
+  --top-pad-small: 70px;
+  --lf-pad-large: 4em;
+  --lf-pad-medium: 2em;
+  --lf-pad-small: 1em;
 }
 
 /* width */
@@ -36,7 +44,7 @@ body {
 }
 
 main {
-  padding: 110px 4em 0;
+  padding: var(--top-pad-large) var(--lf-pad-large) 0;
 }
 
 @media screen and (max-width: 1025px) {
@@ -45,12 +53,12 @@ main {
   }
 
   main {
-    padding: 90px 2em 0;
+    padding: var(--top-pad-medium) var(--lf-pad-medium) 0;
   }
 }
 
 @media screen and (max-width: 769px) {
   main {
-    padding: 70px 1em 0;
+    padding: var(--top-pad-small) var(--lf-pad-small) 0;
   }
 }
