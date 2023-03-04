@@ -10,6 +10,7 @@
   --pink: #f41d7c;
   --purple: #8b3dff;
   --yellow: #f5f242;
+  --black: #2d2904;
 
   --top-pad-large: 110px;
   --top-pad-medium: 90px;
@@ -48,6 +49,17 @@ body {
 
 main {
   padding: var(--top-pad-large) var(--lf-pad-large) 0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.block h3 {
+  margin-top: 0;
+  /* background-color: var(--black); */
+  border-bottom: 2px solid var(--black);
+  color: var(--green);
+  text-shadow: 1px 1px 0 var(--black);
+  text-indent: 2em;
+  padding: 1em;
 }
 
 @media screen and (max-width: 1023px) {

@@ -1,8 +1,7 @@
 main {
   --sms-padding: 1em;
-  --no-rows: 11;
-
-  font-family: "Courier New", Courier, monospace;
+  --no-rows: 10;
+  --gap: 10px;
 }
 
 .sms-outer-most {
@@ -11,6 +10,52 @@ main {
 }
 
 .sms-outer-grid {
+  display: grid;
+  grid-template-rows: 1em auto 1em;
+  grid-template-columns: 2fr 4fr 1em;
+  margin-bottom: 2em;
+}
+
+.sms-outer-grid-item:nth-child(1) {
+  grid-row: 1 / 4;
+  grid-column: 2 / 4;
+}
+
+.sms-outer-grid-item:nth-child(2) {
+  grid-row: 2 / 3;
+  grid-column: 1 / 3;
+}
+
+.sms-outer-grid-item:nth-child(1) .sms-bg {
+  background-color: var(--purple);
+  background: linear-gradient(var(--purple), #7320f1);
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.sms-grid {
+  max-width: 850px;
+  margin: 0 auto var(--gap);
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: 1fr 4fr 1fr;
+  row-gap: var(--gap);
+  grid-template-areas:
+    "recruiter"
+    "candidate";
+}
+
+.sms-grid-item:nth-child(1) {
+  grid-area: recruiter;
+  grid-column: 1 / 3;
+}
+.sms-grid-item:nth-child(2) {
+  grid-area: candidate;
+  grid-column: 2 / 4;
+}
+
+/* .sms-outer-grid {
   max-width: 850px;
   margin: auto;
   display: grid;
@@ -19,22 +64,25 @@ main {
   row-gap: 10px;
 }
 
-.sms-outer-grid-item:nth-child(1) {
+.sms-outer-grid-item:not(:nth-child(1)) {
   grid-row: span 1;
-  grid-column: span 7;
 }
 
-.sms-outer-grid-item:nth-child(2) {
-  grid-row: 2 / calc(var(--no-rows) + 1);
+.sms-outer-grid-item:nth-child(1) {
+  grid-row: 1 / 11;
   grid-column: 3 / 8;
 }
 
-.sms-outer-grid-item:nth-child(odd):not(:nth-child(1)) {
+.sms-outer-grid-item:nth-child(even) {
   grid-column: 1 / 6;
 }
 
-.sms-outer-grid-item:nth-child(even):not(:nth-child(2)) {
+.sms-outer-grid-item:nth-child(odd):not(:nth-child(1)) {
   grid-column: 2 / 7;
+}
+
+.sms-outer-grid-item:nth-child(2) {
+  grid-row: 2 / 3;
 }
 
 .sms-outer-grid-item:nth-child(3) {
@@ -65,14 +113,7 @@ main {
   grid-row: 9 / 10;
 }
 
-.sms-outer-grid-item:nth-child(10) {
-  grid-row: 10 / 11;
-}
-
-/* sobre pastel */
-/* background-color: #f1ebe4; */
-
-.sms-outer-grid-item:nth-child(2) .sms-bg {
+.sms-outer-grid-item:nth-child(1) .sms-bg {
   background-color: var(--purple);
   background: linear-gradient(var(--purple), #7320f1);
   width: 100%;
@@ -86,7 +127,7 @@ main {
   text-align: center;
   font-size: 1.3em;
   font-weight: 900;
-}
+} */
 
 .sms-recruiter,
 .sms-candidate {
@@ -111,20 +152,10 @@ rect {
   box-shadow: 2px 2px 3px #83827f7b;
 }
 
-/* sobre pastel */
-/* background-color: #d7e6ff; */
-/* blue sms yellow-rose bg */
-/* background: linear-gradient(#55c7fd, #3b9cfb);
-  box-shadow: 2px 2px 3px #83827f7b; */
-/* orange-yellow sms pink-purple bg */
-/* background: linear-gradient(#ffd95b, var(--yellow)); */
 .sms-candidate {
-  /* background: linear-gradient(#fffd72, var(--yellow)); */
   box-shadow: 2px 2px 3px #83827f7b;
   background-color: var(--yellow);
   color: black;
-  /* background-color: var(--pink); */
-  /* color: var(--lighter-orange-bg); */
 }
 
 .sms-avatar {
@@ -143,7 +174,7 @@ rect {
   margin-left: 65px;
 }
 
-.sms-content-newline {
+::slotted(span.sms-content-newline) {
   display: inline-block;
   margin-bottom: 1em;
 }
@@ -167,7 +198,10 @@ rect {
     font-size: 1em;
   }
 
-  .sms-outer-grid {
+  /* .sms-outer-grid {
     grid-template-columns: repeat(7, 1fr);
+  } */
+  .sms-outer-grid {
+    grid-template-columns: 2fr 4fr 1fr;
   }
 }

@@ -7,7 +7,6 @@ main {
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(2, auto);
-  font-family: "Courier New", Courier, monospace;
 }
 
 .home-grid .home-item {
