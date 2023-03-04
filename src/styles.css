@@ -7,6 +7,9 @@
   --cardboard-dark: #d0bcad;
   --cardboard-light: #f1ebe4;
   --green: #2cff00;
+  --pink: #f41d7c;
+  --purple: #8b3dff;
+  --yellow: #f5f242;
 
   --top-pad-large: 110px;
   --top-pad-medium: 90px;
@@ -47,7 +50,7 @@ main {
   padding: var(--top-pad-large) var(--lf-pad-large) 0;
 }
 
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: 1023px) {
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -57,7 +60,7 @@ main {
   }
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 767px) {
   main {
     padding: var(--top-pad-small) var(--lf-pad-small) 0;
   }
