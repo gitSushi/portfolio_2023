@@ -7,11 +7,8 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-
-interface Dragged {
-  skill: string;
-  index: number;
-}
+import { Skills } from './skills';
+import { SkillsService } from './skills.service';
 
 @Component({
   selector: 'app-build-a-dev',
@@ -19,35 +16,21 @@ interface Dragged {
   styleUrls: ['./build-a-dev.component.css'],
 })
 export class BuildADevComponent implements OnInit {
-  // @ViewChild('gauge') gauge: ElementRef = {} as ElementRef;
   @ViewChild('output') output: ElementRef = {} as ElementRef;
   @ViewChildren('skill') skillQueryList!: QueryList<ElementRef>;
 
-  percentage = 0;
-  skills: string[] = [
-    'Java',
-    'TypeScript',
-    'Python',
-    'GoLang',
-    'Angular',
-    'Spring',
-    'React',
-    'JestJs',
-    'Docker',
-    'Adaptable',
-    'Agile',
-    'English',
-  ];
-  praises: string[] = [
-    'Good choice !',
-    'Remarkable.',
-    'I like that too !',
-    'It is indeed useful.',
-    'You cannot go wrong with that choice.',
-  ];
-  dragged: Dragged = {} as Dragged;
+  @ViewChild('dreamdev') dreamdev: ElementRef = {} as ElementRef;
 
-  constructor(private root: ElementRef, private renderer: Renderer2) {}
+  percentage = 0;
+  skills: Skills[] = [];
+  praises: string[] = [];
+  dragged: Skills = {} as Skills;
+
+  constructor(
+    private root: ElementRef,
+    private renderer: Renderer2,
+    private skillService: SkillsService
+  ) {}
 
   /**
    * Initialize the mask (actually a clip-path) of the picture (the dev)
@@ -57,6 +40,7 @@ export class BuildADevComponent implements OnInit {
       '--total-selected-in-percentage',
       `${this.percentage}%`
     );
+    this.skills = this.skillService.skills;
   }
 
   /**
@@ -68,14 +52,6 @@ export class BuildADevComponent implements OnInit {
 
     this.renderer.setProperty(li, 'innerHTML', output);
     this.renderer.appendChild(this.output.nativeElement, li);
-  }
-
-  /**
-   * Helper method to choose a comment to add to the output new li element
-   * @returns string
-   */
-  randomComment() {
-    return this.praises[Math.floor(Math.random() * this.praises.length)];
   }
 
   /**
@@ -104,7 +80,7 @@ export class BuildADevComponent implements OnInit {
    * and in case of win dom changes.
    */
 
-  handleDragStart(event: DragEvent, obj: Dragged) {
+  handleDragStart(event: DragEvent, obj: Skills) {
     this.dragged = obj;
     event.dataTransfer?.setData(
       'text',
@@ -125,21 +101,24 @@ export class BuildADevComponent implements OnInit {
 
     if (target.parentElement?.dataset['dropzone'] === 'dropzone') {
       if (event.dataTransfer) {
-        this.skills.splice(this.dragged.index, 1);
+        console.log(this.skills.indexOf(this.dragged));
+        this.skills.splice(this.skills.indexOf(this.dragged), 1);
 
         this.root.nativeElement.style.setProperty(
           '--total-selected-in-percentage',
           `${(this.percentage += 10)}%`
         );
 
+        const output = this.skillService.chooseAComment(
+          this.dragged.name.toLowerCase(),
+          this.percentage
+        );
+
         if (this.percentage === 100) {
-          const output = `I am also an expert in ${this.dragged.skill}. You did it, you build the perfect dev for you ! It is ME !! Now click on contact in the navbar and hire me !`;
           this.addLi(output);
           this.modifyDomRender();
+          this.dreamdev.nativeElement.scrollIntoView({ behaviour: 'smooth' });
         } else if (this.percentage < 100) {
-          const output = `${this.randomComment()} I am indeed an expert in ${
-            this.dragged.skill
-          } !`;
           this.addLi(output);
         }
       }

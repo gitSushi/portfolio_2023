@@ -4,8 +4,8 @@
 
     <h4>Drag and drop "experiential hiring" game.</h4>
     <p>
-      Rules: Drag a chosen skill onto the picture to build the developer of your
-      dream.
+      Règle: Glissez et posez 10 compétences souhaitées sur l'image de gauche
+      dans l'ordre afin de construire le développeur de vos rêves.
     </p>
 
     <div class="flexy-game">
@@ -31,18 +31,18 @@
           <li
             #skill
             *ngFor="let skill of skills; let index = index"
-            class="skill"
+            class="skill {{ skill.type }}"
             draggable="true"
-            (dragstart)="handleDragStart($event, {skill, index})"
+            (dragstart)="handleDragStart($event, skill)"
           >
-            {{ skill }}
+            {{ skill.name }}
           </li>
         </ul>
       </article>
     </div>
 
     <aside>
-      <h4>Description of the developer of your dream</h4>
+      <h4 #dreamdev>Description du développeur de vos rêves</h4>
       <ul #output class="output"></ul>
     </aside>
   </div>
