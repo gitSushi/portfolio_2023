@@ -1,4 +1,49 @@
 <main>
-  <p>build-a-dev works!</p>
-  <!-- <div style="height: 150vh"></div> -->
+  <div class="block tldr-block">
+    <h3>BUILD-A-DEV</h3>
+
+    <h4>Drag and drop "experiential hiring" game.</h4>
+    <p>
+      Rules: Drag a chosen skill onto the picture to build the developer of your
+      dream.
+    </p>
+
+    <div class="flexy-game">
+      <div
+        id="griddy"
+        data-dropzone="dropzone"
+        (dragover)="handleDragOver($event)"
+        (drop)="handleDrop($event)"
+      >
+        <img
+          src="../../assets/no_marui_bg_transparent.png"
+          alt="gauge like background"
+        />
+        <img
+          src="../../assets/marui_standard_not_as_render_transparent.png"
+          alt="marui me to fill the gauge"
+        />
+      </div>
+
+      <article>
+        <h4>Draggable skills</h4>
+        <ul class="skills">
+          <li
+            #skill
+            *ngFor="let skill of skills; let index = index"
+            class="skill"
+            draggable="true"
+            (dragstart)="handleDragStart($event, {skill, index})"
+          >
+            {{ skill }}
+          </li>
+        </ul>
+      </article>
+    </div>
+
+    <aside>
+      <h4>Description of the developer of your dream</h4>
+      <ul #output class="output"></ul>
+    </aside>
+  </div>
 </main>
