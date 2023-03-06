@@ -20,8 +20,9 @@ footer {
   justify-content: space-between;
 }
 
-.top-items {
-  padding: 0 var(--lf-pad-large);
+.block h3,
+.block-footer {
+  margin: 0 var(--lf-pad-large);
 }
 
 footer .block-footer {
@@ -72,8 +73,9 @@ footer .block-footer a {
     height: calc(100vh - var(--top-pad-medium));
   }
 
-  .top-items {
-    padding: 0 var(--lf-pad-medium);
+  .block h3,
+  .block-footer {
+    margin: 0 var(--lf-pad-medium);
   }
 }
 
@@ -82,7 +84,8 @@ footer .block-footer a {
     height: calc(100vh - var(--top-pad-small));
   }
 
-  .top-items {
-    padding: 0 var(--lf-pad-small);
+  .block h3,
+  .block-footer {
+    margin: 0 var(--lf-pad-small);
   }
 }

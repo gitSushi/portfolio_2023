@@ -110,7 +110,7 @@ export class BuildADevComponent implements OnInit {
         );
 
         const output = this.skillService.chooseAComment(
-          this.dragged.name.toLowerCase(),
+          this.dragged,
           this.percentage
         );
 
