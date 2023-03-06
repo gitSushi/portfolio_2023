@@ -77,7 +77,7 @@ export class SkillsService {
   comments: Comment = {
     java: [
       "J'ai une préférence pour les langages objet. Java étant typé, compilé et entièrement objet, je suis aux anges.",
-      'Le langage backend vu pendant la formation de CDA et celui vers lequel je tends pour du code bien organisé.',
+      'Le langage backend étudié pendant la formation de CDA et celui vers lequel je tends à utiliser pour du code bien organisé.',
     ],
     typescript: [
       "Je sais bien que dans le fond TypeScript est du JS mais c'est quand même plus intéressant le code typé.",
@@ -126,6 +126,14 @@ export class SkillsService {
       'Je suis technophile et aime apprendre. Je peux me former à la technologie que vous souhaitez.',
     ],
   };
+
+  /**
+   * Le saviez-vous: Ce site est codé en TypeScript Angular
+   * 1_ Vous recherchez particulièrement un dev qui ...
+   * -> J'ai déjà codé en ...
+   * 2_ et qui ...
+   * -> J'ai été formé à ...
+   */
 
   constructor() {}
 
