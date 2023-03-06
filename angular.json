@@ -76,6 +76,14 @@
             "styles": ["src/styles.css"],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/portfolio_2023/",
+            "repo": "https://github.com/gitSushi/portfolio_2023.git",
+            "assets": ["src/assets"]
+          }
         }
       }
     }
